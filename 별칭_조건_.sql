@@ -1,17 +1,17 @@
-select ename as "»ç¿ø¸í", sal*12+nvl(comm,0) as "¿¬ºÀ" from emp;
+select ename as "ì‚¬ì›ëª…", sal*12+nvl(comm,0) as "ì—°ë´‰" from emp;
 select * from emp;
 
 select ename, nvl(comm,0) from emp;
 select ename, nvl2(comm,comm,0) from emp;
 
 
-select ename || 'ÀÇ Á÷±ŞÀº' || job || 'ÀÔ´Ï´Ù.' as Á÷±Ş
+select ename || 'ì˜ ì§ê¸‰ì€' || job || 'ì…ë‹ˆë‹¤.' as ì§ê¸‰
 from emp;
 
-select ename, sal*12 || '¸¸¿ø' as ¿¬±İ from emp;
+select ename, sal*12 || 'ë§Œì›' as ì—°ê¸ˆ from emp;
 
 
---Áßº¹Á¦°Å
+--ì¤‘ë³µì œê±°
 select * from emp;
 select DISTINCT deptno from emp; 
 select distinct job from emp;
@@ -22,22 +22,22 @@ select * from emp where sal >= 500;
 
 select * from emp where deptno >= 20;
 
-select * from emp where ename = '¾È¼º±â';  --¹®ÀÚ¿­Àº ÀÛÀºµûÀ½Ç¥ ÇÊ¼ö
+select * from emp where ename = 'ì•ˆì„±ê¸°';  --ë¬¸ìì—´ì€ ì‘ì€ë”°ìŒí‘œ í•„ìˆ˜
 
 select * from emp where hiredate < to_date('2005/01/01','YYYY/MM/DD');
 
-select * from emp where deptno = 10 and job ='°úÀå';
-select * from emp where deptno = 30 and job ='°úÀå';
-select * from emp where deptno = 10 or job ='°úÀå';
+select * from emp where deptno = 10 and job ='ê³¼ì¥';
+select * from emp where deptno = 30 and job ='ê³¼ì¥';
+select * from emp where deptno = 10 or job ='ê³¼ì¥';
 
---not¿¬»êÀÚÀÇ 3°¡Áö ¹æ¹ı // <> À» ÃßÃµ!
+--notì—°ì‚°ìì˜ 3ê°€ì§€ ë°©ë²• // <> ì„ ì¶”ì²œ!
 select * from emp where not deptno = 10;
 select * from emp where deptno != 10;
 select * from emp where deptno <> 10;
 
---'between and' ¿¬»êÀÚ·Î and¸¦ ÇÔ²² ¿Ü¿ï°Í.
-select * from emp where sal >= 400 and sal <= 500; --salÀÌ 400ÀÌ»ó 500ÀÌÇÏÀÎ °ª
-select * from emp where sal between 400 and 500; --À§¿Í µ¿ÀÏ
+--'between and' ì—°ì‚°ìë¡œ andë¥¼ í•¨ê»˜ ì™¸ìš¸ê²ƒ.
+select * from emp where sal >= 400 and sal <= 500; --salì´ 400ì´ìƒ 500ì´í•˜ì¸ ê°’
+select * from emp where sal between 400 and 500; --ìœ„ì™€ ë™ì¼
 select * from emp where sal between 500 and 600;
 select * from emp where  sal not between 400 and 600;
 select * from emp where  not sal between 400 and 600;
@@ -45,31 +45,31 @@ select * from emp where  not sal between 400 and 600;
 select * from emp where hiredate between 
 to_date('2003/01/01','YYYY/MM/DD') and to_date('2003/12/31','YYYY/MM/DD');
 
---in¿¬»êÀÚ
+--inì—°ì‚°ì
 select * from emp;
 select * from emp where comm = 80 or comm = 100 or comm = 200;
 select * from emp where comm in(80,100,200);
 select * from emp where comm <> 80 and comm <> 100 and comm <> 200;
 select * from emp where comm not in(80,100,200);
 
---like¿¬»êÀÚ
-select * from emp where ename like 'ÀÌ%';
-select * from emp where ename like 'ÀÌ__'; --Æ¯Á¤ÀÚ¸® °Ë»ö
-select * from emp where ename like '±è%';
-select * from emp where ename like '%±â';
-select * from emp where ename like '%ÀÌ%'; --Æ÷ÇÔ °Ë»ö //ÁÖ·Î »ç¿ëµÊ
-select * from emp where ename like '_¼º%'; --¼º(Ã¹¹øÂ° ÀÚ¸®¹®ÀÚ)Àº °Ë»öÁ¦¿Ü
-select * from emp where ename like '__¼º';
+--likeì—°ì‚°ì
+select * from emp where ename like 'ì´%';
+select * from emp where ename like 'ì´__'; --íŠ¹ì •ìë¦¬ ê²€ìƒ‰
+select * from emp where ename like 'ê¹€%';
+select * from emp where ename like '%ê¸°';
+select * from emp where ename like '%ì´%'; --í¬í•¨ ê²€ìƒ‰ //ì£¼ë¡œ ì‚¬ìš©ë¨
+select * from emp where ename like '_ì„±%'; --ì„±(ì²«ë²ˆì§¸ ìë¦¬ë¬¸ì)ì€ ê²€ìƒ‰ì œì™¸
+select * from emp where ename like '__ì„±';
 
---null ¹«ÇÑÀÇ °ø°£, °ªÀÌ ¾ø´Â »óÅÂ
+--null ë¬´í•œì˜ ê³µê°„, ê°’ì´ ì—†ëŠ” ìƒíƒœ
 select * from emp;
 select * from emp where comm is null;
-select * from emp where comm is not null; --½Ç½ÀÇÏ´Ùº¸¸é ¸¹ÀÌ ¾²ÀÓ. ¹ÌÁ¤ÀÇ °ªÀ» ¼û±â±â À§ÇØ
+select * from emp where comm is not null; --ì‹¤ìŠµí•˜ë‹¤ë³´ë©´ ë§ì´ ì“°ì„. ë¯¸ì •ì˜ ê°’ì„ ìˆ¨ê¸°ê¸° ìœ„í•´
 select * from emp where not comm is null;
 
 
 
---order by Àı
+--order by ì ˆ
  select * from emp;
  select * from emp order by ename asc;
  select * from emp order by sal;
@@ -80,32 +80,32 @@ select * from emp where not comm is null;
  
  
  
- /*[3Àå] ¿À¶óÅ¬ ÁÖ¿äÇÔ¼ö
- DualÅ×ÀÌºí*/--°¡»óÅ×ÀÌºí..?
+ /*[3ì¥] ì˜¤ë¼í´ ì£¼ìš”í•¨ìˆ˜
+ Dualí…Œì´ë¸”*/--ê°€ìƒí…Œì´ë¸”..?
  select 24*60 from dual;
  select sysdate from dual;
  select 34.5678,floor(34.5678),abs(-34.5678), round(34.5678,2),trunc(34.5678,2) from dual;
- select mod(11,4) from dual;--³ª¸ÓÁö°ª
+ select mod(11,4) from dual;--ë‚˜ë¨¸ì§€ê°’
  
- --¹®ÀÚ±æÀÌ
- select length('oracle'), length('¿À¶óÅ¬') from dual;
- select lengthb('¿À¶óÅ¬') from dual;--ÇÑ±ÛÀÚ 3¹ÙÀÌÆ®
+ --ë¬¸ìê¸¸ì´
+ select length('oracle'), length('ì˜¤ë¼í´') from dual;
+ select lengthb('ì˜¤ë¼í´') from dual;--í•œê¸€ì 3ë°”ì´íŠ¸
  
- --¹®ÀÚÃßÃâ
+ --ë¬¸ìì¶”ì¶œ
  select substr('welcome to oracle',4,3) from dual;
  select substr('welcome to oracle',1,7) from dual;
- select substr('¿À¶óÅ¬',1,2) from dual;
- select substrb('¿À¶óÅ¬',1,6) from dual;
+ select substr('ì˜¤ë¼í´',1,2) from dual;
+ select substrb('ì˜¤ë¼í´',1,6) from dual;
  
  select ename, sal, hiredate from emp;
  
- select deptno ºÎ¼­¹øÈ£, dname as ºÎ¼­¸í from dept;
+ select deptno ë¶€ì„œë²ˆí˜¸, dname as ë¶€ì„œëª… from dept;
  
  select distinct job from emp;
  
  select empno, ename, sal from emp where sal <= 300;
  
- select empno, ename, sal from emp where ename = '¿ÀÁöÈ£';
+ select empno, ename, sal from emp where ename = 'ì˜¤ì§€í˜¸';
  
  select empno, ename, sal from emp where sal=250 or sal = 300 or sal = 500;
  select empno, ename, sal from emp where sal in(250, 300, 500);
@@ -113,7 +113,7 @@ select * from emp where not comm is null;
  select empno, ename, sal from emp where sal <> 250 and sal <> 300 and sal <> 500;
  select empno, ename, sal from emp where sal not in(250, 300, 500);
  
- select empno, ename from emp where ename like '±è%' or ename like '%±â%';
+ select empno, ename from emp where ename like 'ê¹€%' or ename like '%ê¸°%';
  
  select * from emp where mgr is null;
  
@@ -121,7 +121,7 @@ select * from emp where not comm is null;
  
  select deptno, empno, ename, job, to_char(hiredate, 'YYYY/MM/DD') from emp order by deptno asc, hiredate asc;
 
-select empno, ename, sal from emp where ename = '¿ÀÁöÈ£';
+select empno, ename, sal from emp where ename = 'ì˜¤ì§€í˜¸';
 
 select empno, ename, sal from emp where sal = 250 or sal = 300 or sal = 500;
 select empno, ename, sal from emp where sal in(250,300,500);
@@ -130,23 +130,23 @@ select empno, ename, sal from emp where sal != 250 and sal != 300 and sal != 500
 select empno, ename, sal from emp where sal not in(250,300,500);
 
 select deptno, empno, ename, job, to_char(hiredate,'YYYY/MM/DD') from emp order by deptno , hiredate;
-select sal*12 + nvl(comm,0) as ¿¬ºÀ from emp;
+select sal*12 + nvl(comm,0) as ì—°ë´‰ from emp;
 
 select * from emp;
 select to_char(hiredate,'YYYY/MM/DD') from emp;
 select * from emp where substr(hiredate,4,2) = 09;
 
 select empno, ename, job, sal,
-    decode(job, 'ºÎÀå', sal+sal*0.05, 
-                '°úÀå', sal+sal*0.1,
-                '´ë¸®', sal+sal*0.15,
-                '»ç¿ø', sal+sal*0.2,
-                '»çÀå', sal,
-                'Â÷Àå', sal) as upsal
+    decode(job, 'ë¶€ì¥', sal+sal*0.05, 
+                'ê³¼ì¥', sal+sal*0.1,
+                'ëŒ€ë¦¬', sal+sal*0.15,
+                'ì‚¬ì›', sal+sal*0.2,
+                'ì‚¬ì¥', sal,
+                'ì°¨ì¥', sal) as upsal
 from emp;
 
 select empno, ename, job, sal, 
-    case when job='ºÎÀå' then sal+sal*0.05
+    case when job='ë¶€ì¥' then sal+sal*0.05
     else sal
     end as upsal
     from emp;
@@ -154,7 +154,7 @@ select empno, ename, job, sal,
 select hiredate, to_char(hiredate,'YY/MON/DD DY') from emp;
 
 
-select round(sysdate-hiredate,0) ±Ù¹«ÀÏ¼ö from emp;
+select round(sysdate-hiredate,0) ê·¼ë¬´ì¼ìˆ˜ from emp;
 
 select max(sal) Maximum, min(sal) Minimum, sum(sal) sum, trunc(avg(sal)) average from emp; 
 
@@ -164,13 +164,13 @@ select job, count(*) from emp group by job;
 
 select * from emp;
 
-select count(mgr) from emp where job = '°úÀå';\
+select count(mgr) from emp where job = 'ê³¼ì¥';\
 
-select decode(deptno, 10, '¿µ¾÷ºÎ',
-                      20, 'ÀÎ»çºÎ', 
-                      30, '°æ¸®ºÎ') as dname, 
-       decode(deptno, 10, '¿ëÀÎ',
-                      20, 'ÀÎÃµ', 
-                      30, '¼­¿ï') as location, count(*) as "number of people", round(avg(sal)) as sal
+select decode(deptno, 10, 'ì˜ì—…ë¶€',
+                      20, 'ì¸ì‚¬ë¶€', 
+                      30, 'ê²½ë¦¬ë¶€') as dname, 
+       decode(deptno, 10, 'ìš©ì¸',
+                      20, 'ì¸ì²œ', 
+                      30, 'ì„œìš¸') as location, count(*) as "number of people", round(avg(sal)) as sal
 from emp group by deptno order by deptno;
 
