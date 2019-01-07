@@ -10,33 +10,33 @@ create table emp02(
 );
 
 insert into emp02
-values(1234, 'È«±æµ¿', '»ç¿ø', 30);
+values(1234, 'í™ê¸¸ë™', 'ì‚¬ì›', 30);
 
 select * from emp02;
 desc emp02;
 
---unique Á¦¾àÁ¶°Ç
+--unique ì œì•½ì¡°ê±´
 create table emp03(
     empno number(4) unique,
     ename varchar2(10) not null,
     job varchar2(9),
     deptno number(2)
 );
-desc emp03; --unique´Â nullµµ µé¾î°¥ ¼ö ÀÖ´Ù! pk¿Í ´Ù¸¥Á¡.
+desc emp03; --uniqueëŠ” nullë„ ë“¤ì–´ê°ˆ ìˆ˜ ìˆë‹¤! pkì™€ ë‹¤ë¥¸ì .
 
 insert into emp03
-values(1000, 'ÇãÁØ', '»ç¿ø', 30);
+values(1000, 'í—ˆì¤€', 'ì‚¬ì›', 30);
 
 insert into emp03
-values(1000, '±èÃ¶¼ö', '°úÀå', 20); --¿¡·¯ÄÚµå 1¹ø unique
+values(1000, 'ê¹€ì² ìˆ˜', 'ê³¼ì¥', 20); --ì—ëŸ¬ì½”ë“œ 1ë²ˆ unique
 
 insert into emp03
-values(null, 'ÀÌ¼ø½Å', '°úÀå', 20); --unique´Â null »ğÀÔ°¡´É
+values(null, 'ì´ìˆœì‹ ', 'ê³¼ì¥', 20); --uniqueëŠ” null ì‚½ì…ê°€ëŠ¥
 
 select * from emp03;
 
 create table emp04(
-    empno number(4) constraint emp04_empno_uk unique, --Á¦¾àÁ¶°Ç¿¡ º°Äª ºÎ¿©ÇÏ±â
+    empno number(4) constraint emp04_empno_uk unique, --ì œì•½ì¡°ê±´ì— ë³„ì¹­ ë¶€ì—¬í•˜ê¸°
     ename varchar2(10) constraint emp04_empno_nn not null,
     job varchar2(9),
     deptno number(2)
@@ -44,32 +44,32 @@ create table emp04(
 desc emp04;
 
 select constraint_name, constraint_type, table_name
-from user_constraints; --Á¦¾àÁ¶°Ç º°ÄªÀ» È®ÀÎÇØº¸ÀÚ
+from user_constraints; --ì œì•½ì¡°ê±´ ë³„ì¹­ì„ í™•ì¸í•´ë³´ì
 
---¿À·ù¸¦ Á» ³»º¼±î
+--ì˜¤ë¥˜ë¥¼ ì¢€ ë‚´ë³¼ê¹Œ
 insert into emp04
-values(1000, 'ÇãÁØ', '»ç¿ø', 30);
+values(1000, 'í—ˆì¤€', 'ì‚¬ì›', 30);
 
 insert into emp04
-values(1000, '±èÃ¶¼ö', '°úÀå', 20); --¿¡·¯ÄÚµå¿¡¼­ uniqueÀÇ º°ÄªÀ» È®ÀÎÇÒ ¼ö ÀÖ´Ù
+values(1000, 'ê¹€ì² ìˆ˜', 'ê³¼ì¥', 20); --ì—ëŸ¬ì½”ë“œì—ì„œ uniqueì˜ ë³„ì¹­ì„ í™•ì¸í•  ìˆ˜ ìˆë‹¤
 
 
 --primary key -> unique + not null
 create table emp05(
-    empno number(4) constraint emp05_empno_pk primary key, --º°ÄªºÎ¿©
+    empno number(4) constraint emp05_empno_pk primary key, --ë³„ì¹­ë¶€ì—¬
     ename varchar2(10) constraint emp05_ename_nn not null,
     job varchar2(9),
     deptno number(2)
 );
 desc emp05;
 
---¿¡·¯³»º¸ÀÚ
+--ì—ëŸ¬ë‚´ë³´ì
 insert into emp05
-values(1000, 'ÇãÁØ', '»ç¿ø', 30);
+values(1000, 'í—ˆì¤€', 'ì‚¬ì›', 30);
 insert into emp05
-values(1000, '±èÃ¶¼ö', '°úÀå', 20); --¿¡·¯ÄÚµå¿¡¼­ º°ÄªÀ» È®ÀÎÇÒ ¼ö ÀÖ´Ù
+values(1000, 'ê¹€ì² ìˆ˜', 'ê³¼ì¥', 20); --ì—ëŸ¬ì½”ë“œì—ì„œ ë³„ì¹­ì„ í™•ì¸í•  ìˆ˜ ìˆë‹¤
 insert into emp05
-values(null, '¾Æ¹«°³', '°úÀå', 20);
+values(null, 'ì•„ë¬´ê°œ', 'ê³¼ì¥', 20);
 
 --foreign key
 create table emp06(
@@ -82,13 +82,13 @@ desc emp06;
 select * from emp06;
 select * from dept;
 
---¿À·ùÈ®ÀÎ/ 50(x)
+--ì˜¤ë¥˜í™•ì¸/ 50(x)
 insert into emp06
-values(1010, 'È«±æµ¿', '»ç¿ø', 50);
+values(1010, 'í™ê¸¸ë™', 'ì‚¬ì›', 50);
 
---dept¿¡´Â 10~40±îÁö ÀÖ´Ù
+--deptì—ëŠ” 10~40ê¹Œì§€ ìˆë‹¤
 insert into emp06
-values(1010, 'È«±æµ¿', '»ç¿ø', 40);
+values(1010, 'í™ê¸¸ë™', 'ì‚¬ì›', 40);
 
 
 
@@ -101,32 +101,32 @@ create table emp07(
 );
 desc emp07;
 
---¿À·ùÈ®ÀÎ
+--ì˜¤ë¥˜í™•ì¸
 insert into emp07
-values(1000, 'ÇãÁØ', 200, 'M');--200ÀÌ ¹üÀ§¸¦ ¹ş¾î³²
+values(1000, 'í—ˆì¤€', 200, 'M');--200ì´ ë²”ìœ„ë¥¼ ë²—ì–´ë‚¨
 insert into emp07
-values(1000, 'ÇãÁØ', 500, 'A');--gerder ¹üÀ§¸¦ ¹ş¾î³²
+values(1000, 'í—ˆì¤€', 500, 'A');--gerder ë²”ìœ„ë¥¼ ë²—ì–´ë‚¨
 insert into emp07
-values(1000, 'ÇãÁØ', 500, 'M');
+values(1000, 'í—ˆì¤€', 500, 'M');
 
-select * from emp07;--µ¥ÀÌÅÍÈ®ÀÎ
+select * from emp07;--ë°ì´í„°í™•ì¸
 
 
---default : »ç¿ëÀÚ°¡ ¾Æ¹«°ªµµ ÀÔ·ÂÇÏÁö ¾Ê¾ÒÀ» ¶§ ±âº»°ª¼³Á¤
+--default : ì‚¬ìš©ìê°€ ì•„ë¬´ê°’ë„ ì…ë ¥í•˜ì§€ ì•Šì•˜ì„ ë•Œ ê¸°ë³¸ê°’ì„¤ì •
 create table dept01(
     deptno number(2) primary key,
     dname varchar(14),
-    loc varchar(13) default '¼­¿ï'
+    loc varchar(13) default 'ì„œìš¸'
 );
 desc dept01;
 
 insert into dept01(deptno, dname)
-values(10,'¾Æ¹«°³');
+values(10,'ì•„ë¬´ê°œ');
 
 select * from dept01;
 
 
---´Ù¸¥¹æ½ÄÀ¸·Î Á¦¾àÁ¶°Ç ÁöÁ¤ÇÏ±â
+--ë‹¤ë¥¸ë°©ì‹ìœ¼ë¡œ ì œì•½ì¡°ê±´ ì§€ì •í•˜ê¸°
 create table emp01(
     empno number(4) primary key,
     ename varchar2(10) not null,
@@ -146,7 +146,7 @@ create table emp002(
 );
 
 
---Á¦¾àÁ¶°Ç º¯°æÇÏ±â
+--ì œì•½ì¡°ê±´ ë³€ê²½í•˜ê¸°
 create table emp10 as select * from emp01;
 desc emp10;
 
@@ -157,29 +157,29 @@ alter table emp10
 add constraint emp10_deptno_fk 
 foreign key(deptno) references dept(deptno);
 
---not nullÀº modify·Î ¼³Á¤ÇØ¾ßÇÔ
+--not nullì€ modifyë¡œ ì„¤ì •í•´ì•¼í•¨
 alter table emp10
 modify job constraint emp10_job_nn not null;
 
 desc emp10;
 
 
---Á¦¾àÁ¶°Ç Á¦°ÅÇÏ±â
+--ì œì•½ì¡°ê±´ ì œê±°í•˜ê¸°
 alter table emp10
-drop constraint emp10_empno_pk;--º°ÄªÀ¸·Î ±âº»Å° Áö¿ì±â
+drop constraint emp10_empno_pk;--ë³„ì¹­ìœ¼ë¡œ ê¸°ë³¸í‚¤ ì§€ìš°ê¸°
 desc emp10;
 
 
---Á¦¾àÁ¶°ÇÀÇ ºñÈ°¼ºÈ­¿Í cascade
+--ì œì•½ì¡°ê±´ì˜ ë¹„í™œì„±í™”ì™€ cascade
 select * from emp where deptno = 10;
 select * from dept;
 
-delete from dept where deptno =  10;--¿À·ù. 
+delete from dept where deptno =  10;--ì˜¤ë¥˜. 
 
 desc dept01;
 
 alter table dept01
-drop primary key cascade;--Á¦°ÅµÇ¸é¼­ °ü°èµµ ´Ù ²÷¾î¹ö¸², »ç½Ç À§ÇèÇÑ ¿É¼Ç
+drop primary key cascade;--ì œê±°ë˜ë©´ì„œ ê´€ê³„ë„ ë‹¤ ëŠì–´ë²„ë¦¼, ì‚¬ì‹¤ ìœ„í—˜í•œ ì˜µì…˜
 
 
 
