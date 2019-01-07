@@ -1,10 +1,10 @@
---½ÃÄö½º´Â ¿À¶óÅ¬¿¡¼­ Áö¿øÇÏ´Â ÇÔ¼ö! mysqlÀº Áö¿øx
---maxvalue¸¦ ÃÖ´ë·Î ÇÑ´Ù°í ¸Ş¸ğ¸®¸¦ Â÷ÁöÇÏ´Â°Ç ¾Æ´Ô
---cycle : ¹İº¹ÀûÀÎ ¹øÈ£¸¦ ÁÖ°íÀÚ ÇÒ ¶§, ±âº»Å°°¡ ¼³Á¤µÇ¾î ÀÖÀ¸¸é ¿À·ù³ª¹Ç·Î Á¶½É
---cache : ´ë°Ô dbaµéÀÌ »ç¿ëÇÏ¸ç ±âº»°ªÀº 20
+--ì‹œí€€ìŠ¤ëŠ” ì˜¤ë¼í´ì—ì„œ ì§€ì›í•˜ëŠ” í•¨ìˆ˜! mysqlì€ ì§€ì›x
+--maxvalueë¥¼ ìµœëŒ€ë¡œ í•œë‹¤ê³  ë©”ëª¨ë¦¬ë¥¼ ì°¨ì§€í•˜ëŠ”ê±´ ì•„ë‹˜
+--cycle : ë°˜ë³µì ì¸ ë²ˆí˜¸ë¥¼ ì£¼ê³ ì í•  ë•Œ, ê¸°ë³¸í‚¤ê°€ ì„¤ì •ë˜ì–´ ìˆìœ¼ë©´ ì˜¤ë¥˜ë‚˜ë¯€ë¡œ ì¡°ì‹¬
+--cache : ëŒ€ê²Œ dbaë“¤ì´ ì‚¬ìš©í•˜ë©° ê¸°ë³¸ê°’ì€ 20
 
---È¸»ç¿¡¼­´Â ³×ÀÌ¹ÖÇÏ´Â°Ô ¾î·Æ´Ù ÀÌ°É·Î ÀÚÁÖ È¸ÀÇ¸¦ ÇÏ±âµµÇÔ. ex)TB_emp -> Å×ÀÌºí emp
---½ÃÇè¡Ù¡Ú¡Ù¡Ú(with³ª by¸¦ ºü¶ß¸®±â ½¬¿ì¹Ç·Î)
+--íšŒì‚¬ì—ì„œëŠ” ë„¤ì´ë°í•˜ëŠ”ê²Œ ì–´ë µë‹¤ ì´ê±¸ë¡œ ìì£¼ íšŒì˜ë¥¼ í•˜ê¸°ë„í•¨. ex)TB_emp -> í…Œì´ë¸” emp
+--ì‹œí—˜â˜†â˜…â˜†â˜…(withë‚˜ byë¥¼ ë¹ ëœ¨ë¦¬ê¸° ì‰¬ìš°ë¯€ë¡œ)
 create SEQUENCE dept_deptno_seq
                 start with 10
                 increment by 10;
@@ -13,26 +13,26 @@ select * from user_sequences;
 select sequence_name, min_value, max_value, increment_by, cycle_flag
 from user_sequences;
 
---currval : ÇöÀç ½ÃÄö½º°ª(Á¶È¸±â´É)
---nextval : ´ÙÀ½ ½ÃÄö½º°ª(±âº»°ª¿¡¼­ insertÇÒ¶§, ¹ß±Ş)
+--currval : í˜„ì¬ ì‹œí€€ìŠ¤ê°’(ì¡°íšŒê¸°ëŠ¥)
+--nextval : ë‹¤ìŒ ì‹œí€€ìŠ¤ê°’(ê¸°ë³¸ê°’ì—ì„œ insertí• ë•Œ, ë°œê¸‰)
 
---nextvalÀº È£ÃâÇÒ ¶§¸¶´Ù Áõ°¡µÇ°í µÇµ¹¸®·Á¸é »èÁ¦ÇÏ°í ´Ù½Ã ¸¸µé¾î¾ßµÊ
+--nextvalì€ í˜¸ì¶œí•  ë•Œë§ˆë‹¤ ì¦ê°€ë˜ê³  ë˜ëŒë¦¬ë ¤ë©´ ì‚­ì œí•˜ê³  ë‹¤ì‹œ ë§Œë“¤ì–´ì•¼ë¨
 select dept_deptno_seq.nextval from dual;
 
---currvalÀº ÇöÀç ½ÃÄö½º¸¦ È®ÀÎÇÒ ¶§
+--currvalì€ í˜„ì¬ ì‹œí€€ìŠ¤ë¥¼ í™•ì¸í•  ë•Œ
 select dept_deptno_seq.currval from dual;
 
---¾Æ¹«·± Á¦¾àÁ¶°ÇÀÌ ¾øÀ¸¸é 1ºÎÅÍ 1¾¿Áõ°¡ÇÏ´Â ½ÃÄö½º°¡ ±âº»°ªÀ¸·Î Àû¿ëµÊ
+--ì•„ë¬´ëŸ° ì œì•½ì¡°ê±´ì´ ì—†ìœ¼ë©´ 1ë¶€í„° 1ì”©ì¦ê°€í•˜ëŠ” ì‹œí€€ìŠ¤ê°€ ê¸°ë³¸ê°’ìœ¼ë¡œ ì ìš©ë¨
 create SEQUENCE sample_seq;
 
---¹ß±ŞµÈ ½ÃÄö½º°¡ ¾øÀ¸´Ï Ã³À½¿¡´Â ¿À·ù°¡ ³²
+--ë°œê¸‰ëœ ì‹œí€€ìŠ¤ê°€ ì—†ìœ¼ë‹ˆ ì²˜ìŒì—ëŠ” ì˜¤ë¥˜ê°€ ë‚¨
 select sample_seq.currval from dual;
---1À» ¹ß±Ş
+--1ì„ ë°œê¸‰
 select sample_seq.nextval from dual;
 
 
 
---½ÃÄö½º´Â 99.9%°¡ insert ¿¬»ê°ú °°ÀÌ »ç¿ëµÇ¾î ÄÃ·³ °ªÀ» ÀÚµ¿À¸·Î ¹ß»ı½ÃÅ°´Â ¿ëµµ·Î »ç¿ë
+--ì‹œí€€ìŠ¤ëŠ” 99.9%ê°€ insert ì—°ì‚°ê³¼ ê°™ì´ ì‚¬ìš©ë˜ì–´ ì»¬ëŸ¼ ê°’ì„ ìë™ìœ¼ë¡œ ë°œìƒì‹œí‚¤ëŠ” ìš©ë„ë¡œ ì‚¬ìš©
 create sequence emp_seq
                 start with 1
                 increment by 1
@@ -46,39 +46,39 @@ create table emp01(
 desc emp01;
 select * from emp01;
 
---Á¦¾àÁ¶°Ç È®ÀÎÇÏ±â
+--ì œì•½ì¡°ê±´ í™•ì¸í•˜ê¸°
 select constraint_name, constraint_type, table_name
 from user_constraints
 where table_name in ('EMP01');
 
---ÄÃ·³ÀÇ Á¦¾àÁ¶°Ç È®ÀÎÇÏ±â
+--ì»¬ëŸ¼ì˜ ì œì•½ì¡°ê±´ í™•ì¸í•˜ê¸°
 select constraint_name, column_name, table_name
 from user_cons_columns
 where table_name in ('EMP01');
 
-----insert¿¬»ê°ú °°ÀÌ ½ÃÄö½º¸¦ ½áº¸ÀÚ------
+----insertì—°ì‚°ê³¼ ê°™ì´ ì‹œí€€ìŠ¤ë¥¼ ì¨ë³´ì------
 insert into emp01
-values (emp_seq.nextval,'È«±æµ¿',sysdate);
+values (emp_seq.nextval,'í™ê¸¸ë™',sysdate);
 
 insert into emp01
-values (emp_seq.nextval,'°­°¨Âù',sysdate);
+values (emp_seq.nextval,'ê°•ê°ì°¬',sysdate);
 -----------------------------------------
 
 select * from emp01;
 
---¾î¶² ½ÃÄö½Ã°¡ ÀÖÀ»±î
+--ì–´ë–¤ ì‹œí€€ì‹œê°€ ìˆì„ê¹Œ
 select sequence_name, min_value, max_value, increment_by, cycle_flag
 from user_sequences;
 
---½ÃÄö½º Á¦°ÅÇÏ±â(Åë»ó ÀÖ´Â ÀÏ ÀÌ±â¿¡ ºÎ´ã°¡Áú ÇÊ¿ä¾ø´Ù)
+--ì‹œí€€ìŠ¤ ì œê±°í•˜ê¸°(í†µìƒ ìˆëŠ” ì¼ ì´ê¸°ì— ë¶€ë‹´ê°€ì§ˆ í•„ìš”ì—†ë‹¤)
 drop sequence dept_deptno_seq;
 
---½ÃÄö½º ¼öÁ¤ÇÏ±â(start with°ªÀº ¼öÁ¤ÇÒ ¼ö ¾ø±â ¶§¹®¿¡ start with¸¦ ¹Ù²Ù°í½ÍÀ¸¸é »èÁ¦ ÈÄ ´Ù½Ã ¸¸µé¾î¾ßÇÔ)
+--ì‹œí€€ìŠ¤ ìˆ˜ì •í•˜ê¸°(start withê°’ì€ ìˆ˜ì •í•  ìˆ˜ ì—†ê¸° ë•Œë¬¸ì— start withë¥¼ ë°”ê¾¸ê³ ì‹¶ìœ¼ë©´ ì‚­ì œ í›„ ë‹¤ì‹œ ë§Œë“¤ì–´ì•¼í•¨)
 create SEQUENCE dept_deptno_seq
                 start with 10
                 increment by 10
                 maxvalue 30;
-select dept_deptno_seq.nextval from dual;--maxvalue°¡ 30ÀÌ¶ó 4¹ø ½ÇÇàÇÒ ¶§ºÎÅÍ ¿À·ù°¡ ³²
+select dept_deptno_seq.nextval from dual;--maxvalueê°€ 30ì´ë¼ 4ë²ˆ ì‹¤í–‰í•  ë•Œë¶€í„° ì˜¤ë¥˜ê°€ ë‚¨
 
 alter sequence dept_deptno_seq
 maxvalue 1000;
@@ -87,9 +87,9 @@ maxvalue 1000;
 
 
 
---ÀÎµ¦½º(Ã¥±òÇÇ..?) : Ã³¸®¼Óµµ¸¦ Çâ»ó½ÃÅ°±â À§ÇØ¼­ ÄÃ·³¿¡ ´ëÇØ¼­ »ı¼ºÇÏ´Â ¿À¶óÅ¬ °´Ã¼, ¸Ş¸ğ¸®ÇÊ¿ä ex)µµ¼­°ü, Áöµµ
---¼öÁ¤ÀÌ ÀÚÁÖ ÀÏ¾î³ª´Â µ¥ÀÌÅÍ¿¡´Â ¿ÀÈ÷·Á ¼º´ÉÀÌ ¶³¾îÁø´Ù. 
---¿À¶óÅ¬Àº primary key³ª unipue¿¡´Â ÀÎµ¦½º¸¦ ÀÚµ¿À¸·Î ¸¸µé¾î ÁØ´Ù.
+--ì¸ë±ìŠ¤(ì±…ê¹”í”¼..?) : ì²˜ë¦¬ì†ë„ë¥¼ í–¥ìƒì‹œí‚¤ê¸° ìœ„í•´ì„œ ì»¬ëŸ¼ì— ëŒ€í•´ì„œ ìƒì„±í•˜ëŠ” ì˜¤ë¼í´ ê°ì²´, ë©”ëª¨ë¦¬í•„ìš” ex)ë„ì„œê´€, ì§€ë„
+--ìˆ˜ì •ì´ ìì£¼ ì¼ì–´ë‚˜ëŠ” ë°ì´í„°ì—ëŠ” ì˜¤íˆë ¤ ì„±ëŠ¥ì´ ë–¨ì–´ì§„ë‹¤. 
+--ì˜¤ë¼í´ì€ primary keyë‚˜ unipueì—ëŠ” ì¸ë±ìŠ¤ë¥¼ ìë™ìœ¼ë¡œ ë§Œë“¤ì–´ ì¤€ë‹¤.
 select index_name, table_name, column_name
 from user_ind_columns
 where table_name in('EMP','DEPT');
@@ -104,24 +104,24 @@ select * from emp;
 select * from emp;
 select * from emp01;
 
---Äõ¸®¸¦ º¹Á¦ÇÏ¿© µ¥ÀÌÅÍ¸¦ ´Ã·Áº¸ÀÚ
+--ì¿¼ë¦¬ë¥¼ ë³µì œí•˜ì—¬ ë°ì´í„°ë¥¼ ëŠ˜ë ¤ë³´ì
 insert into emp01
 select * from emp01;
 
---ÀÌÁ¦ ÀÛ¾÷¼Óµµ¸¦ È®ÀÎ!
+--ì´ì œ ì‘ì—…ì†ë„ë¥¼ í™•ì¸!
 select * from emp01;
 select distinct empno, ename from emp01
-where ename = '±è»ç¶û';
+where ename = 'ê¹€ì‚¬ë‘';
 
---ÀÎµ¦½º »ı¼º
+--ì¸ë±ìŠ¤ ìƒì„±
 create index idx_emp01_ename
 on emp01(ename);
 
---ÀÎµ¦½º Á¦°Å
+--ì¸ë±ìŠ¤ ì œê±°
 drop index idx_emp01_ename;
 
 
---ÇÔ¼ö±â¹İ ÀÎµ¦½º
+--í•¨ìˆ˜ê¸°ë°˜ ì¸ë±ìŠ¤
 create index idx_emp01_annsal
 on emp01(sal*12);
 
@@ -133,7 +133,7 @@ where table_name in('EMP01');
 
 
 
---500p ºÎ¼­Å×ÀÌºí¿¡ ºÎ¼­¹øÈ£¸¦ ÀÚµ¿À¸·Î ºÎ¿©
+--500p ë¶€ì„œí…Œì´ë¸”ì— ë¶€ì„œë²ˆí˜¸ë¥¼ ìë™ìœ¼ë¡œ ë¶€ì—¬
 create table dept_example(
     deptno number(4) primary key,
     dname varchar(15),
@@ -154,12 +154,12 @@ create sequence dept_example_seq
     nocycle;
     
 insert into dept_example
-values(dept_example_seq.nextval, 'ÀÎ»ç°ú','¼­¿ï');
+values(dept_example_seq.nextval, 'ì¸ì‚¬ê³¼','ì„œìš¸');
 insert into dept_example
-values(dept_example_seq.nextval, '°æ¸®°ú','¼­¿ï');
+values(dept_example_seq.nextval, 'ê²½ë¦¬ê³¼','ì„œìš¸');
 insert into dept_example
-values(dept_example_seq.nextval, 'ÃÑ¹«°ú','´ëÀü');
+values(dept_example_seq.nextval, 'ì´ë¬´ê³¼','ëŒ€ì „');
 insert into dept_example
-values(dept_example_seq.nextval, '±â¼úÆÀ','ÀÎÃµ');
+values(dept_example_seq.nextval, 'ê¸°ìˆ íŒ€','ì¸ì²œ');
 
 select * from dept_example;
