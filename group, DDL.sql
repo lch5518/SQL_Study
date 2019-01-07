@@ -1,18 +1,18 @@
---Áö³­½Ã°£ ÄûÁî ´ä
+--ì§€ë‚œì‹œê°„ í€´ì¦ˆ ë‹µ
 select * from emp
 where mod(empno, 2) = 1;
 
-select hiredate, substr(hiredate,1,2) ³âµµ,
-                 substr(hiredate,4,2) ¿ù,
-                 substr(hiredate,7,2) ÀÏ
+select hiredate, substr(hiredate,1,2) ë…„ë„,
+                 substr(hiredate,4,2) ì›”,
+                 substr(hiredate,7,2) ì¼
                  from emp;
                  
-select hiredate, to_char(hiredate,'yyyy') ³âµµ, 
-                 to_char(hiredate,'mm') ¿ù,
-                 to_char(hiredate,'dd') ÀÏ
+select hiredate, to_char(hiredate,'yyyy') ë…„ë„, 
+                 to_char(hiredate,'mm') ì›”,
+                 to_char(hiredate,'dd') ì¼
                  from emp;
                  
-select empno, ename, nvl(to_char(mgr, '9999'), 'c e o') as Á÷¼Ó»ó°ü
+select empno, ename, nvl(to_char(mgr, '9999'), 'c e o') as ì§ì†ìƒê´€
         from emp
         where mgr is null;
         
@@ -20,15 +20,15 @@ select * from emp;
 
 select * from emp where comm is null;
 
---±×·ìÇÔ¼ö
-select deptno, count(*) "ºÎ¼­º° »ç¿ø¼ö", count(comm) "Ä¿¹Ì¼Ç ¹Ş´Â »ç¿ø¼ö"
+--ê·¸ë£¹í•¨ìˆ˜
+select deptno, count(*) "ë¶€ì„œë³„ ì‚¬ì›ìˆ˜", count(comm) "ì»¤ë¯¸ì…˜ ë°›ëŠ” ì‚¬ì›ìˆ˜"
 from emp
 group by deptno
 order by deptno;
 
 
 
-select job, sum(sal) as "¿ù±ŞÇÕ°è"
+select job, sum(sal) as "ì›”ê¸‰í•©ê³„"
 from emp
 group by job;
 
@@ -42,59 +42,59 @@ having avg(sal) >= 500;
 
 select job, count(*), sum(sal)
 from emp
-where job not like '%»ç¿ø%'
+where job not like '%ì‚¬ì›%'
 group by job
 having sum(sal) >= 1000
-order by sum(sal) desc; -- ±âº»Àº asc(¿À¸§Â÷¼ø)
+order by sum(sal) desc; -- ê¸°ë³¸ì€ asc(ì˜¤ë¦„ì°¨ìˆœ)
 
-select ename, sal, to_char(hiredate,'yyyy-mm-dd') as ÀÔ»çÀÏ from emp;
+select ename, sal, to_char(hiredate,'yyyy-mm-dd') as ì…ì‚¬ì¼ from emp;
 
 
---Å×ÀÌºí±¸Á¶¸¦ ¸¸µå´Â create table
+--í…Œì´ë¸”êµ¬ì¡°ë¥¼ ë§Œë“œëŠ” create table
 create table emp01(
     empno number(4),
     ename varchar2(14),
     sal number(7,3)
 );
 
---¸¸µç Å×ÀÌºíÈ®ÀÎÇÏ±â
+--ë§Œë“  í…Œì´ë¸”í™•ì¸í•˜ê¸°
 desc emp01;
 
---ÄÃ·³Ãß°¡ÇÏ±â
+--ì»¬ëŸ¼ì¶”ê°€í•˜ê¸°
 alter table emp01
 add(birth date);
 
---ÄÃ·³ º¯°æÇÏ±â
+--ì»¬ëŸ¼ ë³€ê²½í•˜ê¸°
 alter table emp01
 modify ename varchar2(30);
 
---ÄÃ·³ Á¦°ÅÇÏ±â
+--ì»¬ëŸ¼ ì œê±°í•˜ê¸°
 alter table emp01
 drop column ename;
 
 desc emp01;
 
 
---Å×ÀÌºí¸í ¼öÁ¤
+--í…Œì´ë¸”ëª… ìˆ˜ì •
 rename emp01 to emp02;
 rename emp02 to emp01;
 desc emp02;
 
---Å×ÀÌºí Á¦°Å, Áö¿ï¶§´Â °ü°è¸¦ ¸ÕÀú »ìÆìº¸°í ÀÚ½Ä -> ºÎ¸ğ ¼øÀ¸·Î Áö¿ö¾ß ÇÑ´Ù.
+--í…Œì´ë¸” ì œê±°, ì§€ìš¸ë•ŒëŠ” ê´€ê³„ë¥¼ ë¨¼ì € ì‚´í´ë³´ê³  ìì‹ -> ë¶€ëª¨ ìˆœìœ¼ë¡œ ì§€ì›Œì•¼ í•œë‹¤.
 drop table emp02;
 desc emp02;
 
---Áß°£°í»ç 10¹®Á¦ ¾ÈÆÅ, 30Á¡¹èÁ¡
+--ì¤‘ê°„ê³ ì‚¬ 10ë¬¸ì œ ì•ˆíŒ, 30ì ë°°ì 
 
---1.table 3 »ı¼ºÄõ¸® + desc table
---Äõ¸® + desc___ + °á°ú
---2.table ÄÃ·³Ãß°¡ Query + desc table °á°ú
---3.rename Äõ¸® + desc table °á°ú
---4. ctas»ç¿ëÄõ¸® + desc table °á°ú
---5. drop table Äõ¸®
+--1.table 3 ìƒì„±ì¿¼ë¦¬ + desc table
+--ì¿¼ë¦¬ + desc___ + ê²°ê³¼
+--2.table ì»¬ëŸ¼ì¶”ê°€ Query + desc table ê²°ê³¼
+--3.rename ì¿¼ë¦¬ + desc table ê²°ê³¼
+--4. ctasì‚¬ìš©ì¿¼ë¦¬ + desc table ê²°ê³¼
+--5. drop table ì¿¼ë¦¬
 
 
---Å×ÀÌºí»ı¼º
+--í…Œì´ë¸”ìƒì„±
 create table  customer
 (
     CTMR_NO         varchar2(50) not null,
@@ -147,15 +147,15 @@ desc temp_test;
 drop table temp_test;
 desc temp_tesp;
 
---Å×ÀÌºí ¼öÁ¤
+--í…Œì´ë¸” ìˆ˜ì •
 ALTER TABLE CUSTOMER_EMPLOYEE ADD(ODR_DATE DATE);
 DESC CUSTOMER_EMPLOYEE;
 
---Å×ÀÌºí¸í º¯°æ
+--í…Œì´ë¸”ëª… ë³€ê²½
 RENAME CUSTOMER_EMPLOYEE TO PDCT_ORDER;
 DESC PDCT_ORDER;
 
---Å×ÀÌºí »èÁ¦
+--í…Œì´ë¸” ì‚­ì œ
 CREATE TABLE TEMP_EMP AS SELECT * FROM EMPLOYEE;
 DESC TEMP_EMP;
 DROP TABLE TEMP_EMP;
